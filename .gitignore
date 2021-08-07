@@ -1,0 +1,5 @@
+node_modules/
+.vscode/
+plantillas/
+
+package-lock.json

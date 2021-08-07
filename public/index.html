@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<style>
+    .table td,
+    .table th {
+        vertical-align: middle;
+    }
+    
+    h1 {
+        color: blue;
+    }
+    
+    hr {
+        background-color: #ddd;
+    }
+    
+    .jumbotron {
+        min-height: 10vh;
+        min-width: 5vh;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Formulario de Ingreso de Productos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <div class="jumbotron">
+        <div class="table-responsive">
+            <table class="table table-dark">
+
+                <body>
+                    <h1>Ingrese Producto</h1>
+                    <br>
+                    <form action="/api/productos/guardar" method="POST">
+                        <h2>Nombre:</h2><input type="text" name="title" id="nombre">
+                        <h2>Precio:</h2><input type="text" name="price" id="precio">
+                        <h2>Foto URL:</h2><input type="text" name="thumbnail" id="foto">
+                        <br>
+                        <br>
+                        <button style="background-color: green;">Enviar</button>
+                    </form>
+                </body>
+            </table>
+        </div>
+    </div>
+    <div class="jumbotron">
+        <div id='datos'></div>
+    </div>
+    <div class="jumbotron">
+        <h1>Centro de Mensajes</h1>
+        <br>
+        <form onsubmit="return addMessage(this)">
+            <input type="text" id="username" placeholder="agus@gmail.com">
+            <hr>
+            <div id="messages"></div>
+            <br>
+            <input type="text" id="texto" placeholder="Ingresa un mensaje..">
+            <input type="submit" value="Enviar" style="background-color: rgb(0, 174, 255); color: white;">
+        </form>
+
+    </div>
+</body>
+
+</html>
