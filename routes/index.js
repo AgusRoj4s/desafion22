@@ -16,5 +16,7 @@ module.exports = () => {
     router.put('/productos/actualizar/:name', productController.updateProduct);
     router.delete('/productos/borrar/:name', productController.deleteProduct);
 
+    router.get('/productos/vista-test/:cant?', productController.testProducts);
+
     return router;
-};
+};  

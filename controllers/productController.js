@@ -2,6 +2,8 @@ const { errorMonitor } = require('events');
 const { model } = require('mongoose');
 const productos = require('../api/productos');
 const products = require('../models/productos');
+const faker = require('faker');
+
 exports.getProducts = async(req, res) => {
     try {
         let allProducts = await products.find();
@@ -80,3 +82,26 @@ exports.deleteProduct = async(req, res) => {
         console.log(error)
     }
 };
+
+exports.testProducts = async(req, res) => {
+    try {
+        if(req.params.cant == 0){
+            res.json({ error: 'no hay productos!'});
+        }else{
+            const cant = req.params.cant || 10;
+            let productosCargados = [];
+            for(let i = 0; i<cant; i++){
+                let product = {
+                    name: faker.commerce.product(),
+                    price: faker.commerce.price(),
+                    thumbnail: faker.image.image()
+                };
+                productosCargados.push(product)
+            }
+        console.log(productosCargados)
+        res.json(productosCargados)
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
